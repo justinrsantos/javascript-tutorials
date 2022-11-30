@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Function start</title>
+    <style>
+      .msgBox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 200px;
+        background: #eee;
+      }
+
+      .msgBox p {
+        line-height: 1.5;
+        padding: 10px 20px;
+        color: #333;
+      }
+
+      .msgBox button {
+        background: none;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.1rem;
+        color: #aaa;
+      }
+
+    </style>
+  </head>
+  <body>
+    <button>Display message box</button>
+
+    <script>
+      function displayMessage (){
+        const body = document.body;             // assigns const body to the <body> element
+        const panel = document.createElement('div'); // creates an element 'div' and assigns it to const panel
+        panel.setAttribute('class','msgBox'); // sets the class of panel (which is a div), to msgBox
+        body.appendChild(panel); // puts panel inside the body element
+        
+        const msg = document.createElement('p'); // creates an element 'p' and assigns it to const msg
+        msg.textContent='This is a message box'; // sets the content of msg
+        panel.appendChild(msg); // puts msg inside panel element
+
+        const closeBtn=document.createElement('button'); // creates a button element and assigns it to const closeBtn
+        closeBtn.textContent='x'; //sets the content of closeBtn
+        panel.appendChild(closeBtn); //puts closeBtn inside panel element
+
+        closeBtn.addEventListener('click',() => 
+        panel.parentNode.removeChild(panel));
+
+        const btn = document.querySelector('button');
+        btn.addEventListener('click', displayMessage);
+      }
+    </script>
+  </body>
+</html>
